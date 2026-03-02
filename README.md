@@ -23,8 +23,8 @@ The dashboard is built using Power BI, with DAX formulas for KPIs and visualizat
 
 ## Dashboard Screenshot
 
-![Dashboard Screenshot](<img width="1364" height="755" alt="image" src="https://github.com/user-attachments/assets/cd6633c6-7f25-4d8f-91da-6141223e63b3" />
-)  
+### <img width="1364" height="755" alt="Screenshot 2026-03-02 195812" src="https://github.com/user-attachments/assets/40b63a24-b1aa-4566-9e56-ca14cfdbcd67" />
+ 
 *(Upload the provided image as `dashboard-screenshot.png` in your repo for reference.)*
 
 ## DAX Code
