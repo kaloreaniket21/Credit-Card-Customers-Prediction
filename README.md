@@ -1,67 +1,78 @@
-# Credit-Card-Customers-Prediction
-This repository contains a Power BI dashboard for analyzing bank customer churn based on a dataset including features like attrition flags, customer demographics, card categories, income levels, credit limits, utilization ratios, and more. The dashboard visualizes key metrics and insights to identify churn patterns and inform retention strategies.
-# Bank Customer Churn Analysis Dashboard
+# 🏦 Credit Card Customer Churn Analytics Dashboard
 
-## Project Overview
+[![Power BI](https://img.shields.io/badge/Data_Viz-Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
+[![Excel](https://img.shields.io/badge/Data_Cleaning-MS%20Excel-217346?style=flat&logo=microsoftexcel&logoColor=white)](https://www.microsoft.com/excel)
+[![Kaggle](https://img.shields.io/badge/Dataset-Kaggle-20BEFF?style=flat&logo=kaggle&logoColor=white)](https://www.kaggle.com/)
 
-This repository contains a Power BI dashboard for analyzing bank customer churn based on a dataset including features like attrition flags, customer demographics, card categories, income levels, credit limits, utilization ratios, and more. The dashboard visualizes key metrics and insights to help identify churn patterns and inform retention strategies.
+An end-to-end descriptive and diagnostic analytics project built to identify high-risk credit card customers and uncover the driving factors behind customer attrition.
 
-The dashboard is built using Power BI, with DAX formulas for KPIs and visualizations. You can import the `.pbix` file (if provided) or recreate it using the DAX code below.
+## 🌟 Project Overview
+Customer attrition (churn) represents a massive loss in lifetime value for retail banks. This project analyzes a dataset of over 10,000 credit card customers to identify which demographic and financial segments are most likely to close their accounts. By transitioning from static spreadsheets to an interactive Power BI dashboard, the retention team can now pinpoint exactly *who* is leaving and *why*.
 
-### Key Features
-- **KPIs**: Churn Rate, Average Customer Age, Total Active Customers, etc.
-- **Charts**: Bar charts for churn by card category, pie charts for churn by income, scatter plots for financial correlations.
-- **Data Source**: Assumes a table named `'BankChurners'` (e.g., from CSV or Excel import).
-- **Tools Used**: Power BI Desktop.
+### Key Business Questions Answered:
+* What is the overall customer churn rate?
+* Which credit card tier (Platinum, Gold, Silver, Blue) experiences the highest attrition?
+* How does income level correlate with a customer's likelihood to leave the bank?
+* What is the relationship between credit utilization, revolving balances, and account closures?
 
-## Installation
+---
 
-1. Download Power BI Desktop 
-2. Import your dataset (e.g., `BankChurners.csv`) into Power BI.
-3. Create measures using the DAX code provided below.
-4. Arrange visuals as per the layout suggestions in the previous conversation or based on the screenshot.
+## 🛠 Tech Stack & Workflow
+* **Data Source:** `BankChurners` dataset from Kaggle.
+* **Data Cleaning (ETL):** **Microsoft Excel** used to handle missing entries, standardize "Unknown" categorical values (e.g., in Education and Income), and format numerical financial columns.
+* **Data Modeling:** **Power BI Desktop** used to establish data relationships and calculate custom DAX measures.
+* **Visualization:** **Power BI** interactive dashboard featuring dynamic cross-filtering.
 
-## Dashboard Screenshot
+---
+<img width="1413" height="777" alt="Screenshot 2026-03-05 164727" src="https://github.com/user-attachments/assets/1663359d-3076-418e-a62e-7ee61f9a86aa" />
 
-### <img width="1364" height="755" alt="Screenshot 2026-03-02 195812" src="https://github.com/user-attachments/assets/40b63a24-b1aa-4566-9e56-ca14cfdbcd67" />
- 
-*(Upload the provided image as `dashboard-screenshot.png` in your repo for reference.)*
+## 📊 Dashboard Highlights
+The dashboard is designed for top-down executive analysis, moving from high-level KPIs to granular behavioral clusters:
 
-## DAX Code
+1. **Top-Level KPIs:**
+   * **Churn Rate:** 16.07%
+   * **Total Active Customers:** 8,500
+   * **Average Customer Age:** 46.33
+   * **Sum of Avg Utilization Ratio:** 2.78K
 
-Below is the DAX code for key measures. You can copy-paste these directly into Power BI's "New Measure" dialog.
+2. **Demographic & Tier Breakdown:**
+   * Bar charts detailing **Churn Rate by Card Category** (Platinum, Gold, Blue, Silver).
+   * Horizontal bar charts mapping **Churn by Income Category**.
+   * Donut/Pie charts visualizing the distribution of customer age and income brackets.
 
-### Churn Rate
+3. **Financial Behavior Analysis:**
+   * A detailed scatter plot tracking the **Average Credit Limit vs. Total Revolving Balance**, segmented by Utilization Ratio, to identify high-risk debt clusters.
+
+---
+
+## 💡 Key Business Insights Discovered
+* **The "Premium" Flight Risk:** Surprisingly, **Platinum** cardholders exhibit the highest relative churn rate (exceeding 20%), suggesting the bank's premium rewards program is failing to retain high-value clients compared to the highly stable Silver tier.
+* **The Income Barbell Effect:** Customers in the highest income bracket (**$120K+**) and the lowest bracket (**Less than $40K**) are churning at the highest rates. The bank is simultaneously losing its wealthiest and most financially vulnerable segments.
+* **Credit Utilization Risk:** Scatter plot analysis reveals specific clusters of customers with low credit limits but high revolving balances, indicating a segment of financially stressed customers at high risk of default or churn.
+
+---
+
+## ⚙️ Core DAX Measures Used
+To enable dynamic filtering, several custom DAX formulas were created. Examples include:
+
 ```dax
+-- Calculating the Overall Churn Rate
 Churn Rate = 
-### DIVIDE(
-    COUNTROWS(FILTER(BankChurners, BankChurners[Attrition_Flag] = "Attrited Customer")),
-    COUNTROWS(BankChurners)
-) * 100
-Feel free to fork and submit pull requests for improvements, such as adding more DAX measures or ML integration for churn prediction.
-
-### Average Customer Age
-daxAvg Customer Age = AVERAGE(BankChurners[Customer_Age])
-
-### Total Active Customers
-daxTotal Active Customers = 
-COUNTROWS(FILTER(BankChurners, BankChurners[Attrition_Flag] = "Existing Customer"))
-
-### Churn by Card Category
-daxChurn by Card Category = 
 DIVIDE(
-    CALCULATE(COUNTROWS(FILTER(BankChurners, BankChurners[Attrition_Flag] = "Attrited Customer"))),
-    COUNTROWS(BankChurners)
+    CALCULATE(COUNTROWS('BankChurners'), 'BankChurners'[Attrition_Flag] = "Attrited Customer"),
+    COUNTROWS('BankChurners')
+) * 100
+
+-- Calculating Total Active Customers
+Total Active Customers = 
+CALCULATE(
+    COUNTROWS('BankChurners'), 
+    'BankChurners'[Attrition_Flag] = "Existing Customer"
 )
-### Average Utilization Ratio
-daxAvg Utilization Ratio = AVERAGE(BankChurners[Avg_Utilization_Ratio])
 
-### Sum of Credit Limit
-daxSum of Credit Limit = SUM(BankChurners[Credit_Limit])
+##  Author
+**Aniket Kalore** *Data Analyst*
 
-### Churn Rate by Income Category
-daxChurn Rate by Income = 
-DIVIDE(
-    CALCULATE(COUNTROWS(FILTER(BankChurners, BankChurners[Attrition_Flag] = "Attrited Customer"))),
-    CALCULATE(COUNTROWS(BankChurners))
-) * 100
+📧 [kaloreaniket21@gmail.com](mailto:kaloreaniket21@gmail.com)  
+🔗 [LinkedIn]( www.linkedin.com/in/aniket-kalore-9710712b0) 
+     | [GitHub] https://github.com/kaloreaniket21
