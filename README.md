@@ -70,10 +70,11 @@ CALCULATE(
     'BankChurners'[Attrition_Flag] = "Existing Customer"
 )
 
-//
-### Author
+```
+##  Author
 **Aniket Kalore** *Data Analyst*
 
- [kaloreaniket21@gmail.com](mailto:kaloreaniket21@gmail.com)  
- [LinkedIn]( www.linkedin.com/in/aniket-kalore-9710712b0) 
+📧 [kaloreaniket21@gmail.com](mailto:kaloreaniket21@gmail.com)  
+🔗 [LinkedIn]( www.linkedin.com/in/aniket-kalore-9710712b0) 
      | [GitHub] https://github.com/kaloreaniket21
+
