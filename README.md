@@ -6,7 +6,7 @@
 
 An end-to-end descriptive and diagnostic analytics project built to identify high-risk credit card customers and uncover the driving factors behind customer attrition.
 
-## 🌟 Project Overview
+##  Project Overview
 Customer attrition (churn) represents a massive loss in lifetime value for retail banks. This project analyzes a dataset of over 10,000 credit card customers to identify which demographic and financial segments are most likely to close their accounts. By transitioning from static spreadsheets to an interactive Power BI dashboard, the retention team can now pinpoint exactly *who* is leaving and *why*.
 
 ### Key Business Questions Answered:
@@ -17,7 +17,7 @@ Customer attrition (churn) represents a massive loss in lifetime value for retai
 
 ---
 
-## 🛠 Tech Stack & Workflow
+##  Tech Stack & Workflow
 * **Data Source:** `BankChurners` dataset from Kaggle.
 * **Data Cleaning (ETL):** **Microsoft Excel** used to handle missing entries, standardize "Unknown" categorical values (e.g., in Education and Income), and format numerical financial columns.
 * **Data Modeling:** **Power BI Desktop** used to establish data relationships and calculate custom DAX measures.
@@ -26,7 +26,7 @@ Customer attrition (churn) represents a massive loss in lifetime value for retai
 ---
 <img width="1413" height="777" alt="Screenshot 2026-03-05 164727" src="https://github.com/user-attachments/assets/1663359d-3076-418e-a62e-7ee61f9a86aa" />
 
-## 📊 Dashboard Highlights
+##  Dashboard Highlights
 The dashboard is designed for top-down executive analysis, moving from high-level KPIs to granular behavioral clusters:
 
 1. **Top-Level KPIs:**
@@ -45,14 +45,14 @@ The dashboard is designed for top-down executive analysis, moving from high-leve
 
 ---
 
-## 💡 Key Business Insights Discovered
+## Key Business Insights Discovered
 * **The "Premium" Flight Risk:** Surprisingly, **Platinum** cardholders exhibit the highest relative churn rate (exceeding 20%), suggesting the bank's premium rewards program is failing to retain high-value clients compared to the highly stable Silver tier.
 * **The Income Barbell Effect:** Customers in the highest income bracket (**$120K+**) and the lowest bracket (**Less than $40K**) are churning at the highest rates. The bank is simultaneously losing its wealthiest and most financially vulnerable segments.
 * **Credit Utilization Risk:** Scatter plot analysis reveals specific clusters of customers with low credit limits but high revolving balances, indicating a segment of financially stressed customers at high risk of default or churn.
 
 ---
 
-## ⚙️ Core DAX Measures Used
+##  Core DAX Measures Used
 To enable dynamic filtering, several custom DAX formulas were created. Examples include:
 
 ```dax
@@ -73,6 +73,6 @@ CALCULATE(
 ##  Author
 **Aniket Kalore** *Data Analyst*
 
-📧 [kaloreaniket21@gmail.com](mailto:kaloreaniket21@gmail.com)  
-🔗 [LinkedIn]( www.linkedin.com/in/aniket-kalore-9710712b0) 
+ [kaloreaniket21@gmail.com](mailto:kaloreaniket21@gmail.com)  
+ [LinkedIn]( www.linkedin.com/in/aniket-kalore-9710712b0) 
      | [GitHub] https://github.com/kaloreaniket21
